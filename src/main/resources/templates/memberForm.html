@@ -262,7 +262,7 @@
 				<table id="id">
 					<tr>
 						<td><input type="text" th:field="*{email}" placeholder="이메일을 입력해주세요"></td>
-						<p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
+						  <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect data</p>
 					</tr>
 
 				</table>

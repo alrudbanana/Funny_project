@@ -34,24 +34,16 @@ public class MemberController {
     	System.out.println("컨트롤러 호출됨 ");
     	System.out.println(memberFormDto.getMemName());
     	
-    	if(bindingResult.hasErrors()){
-    		
-    		System.out.println("Validation 오류발생");
-    		
-            return "memberForm";
-        }
-    	
+    	if(bindingResult.hasErrors()) {
+			return "memberForm";
+		}
        try {
     	   this.memberService.saveMember(memberFormDto);
     	  
-       }catch(DataIntegrityViolationException e) {
-    	   e.printStackTrace();
-    	   bindingResult.reject("signupFailed", "이미 등록된 사용자입니다.");
-       } catch(Exception e) {
-               e.printStackTrace();
-               bindingResult.reject("signupFailed", e.getMessage());
-               return "memberForm";
-       }
+       }catch(Exception e) {
+			model.addAttribute("memberFormDto", "아이디 혹은 이메일 중복.");
+			return "memberForm";
+		}
     return "redirect:/";
    
     }
