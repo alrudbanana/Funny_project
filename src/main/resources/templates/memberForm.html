@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-
+      
       >
 <!--       layout:decorate="~{layouts/layout1}" -->
 <head>
@@ -258,11 +257,12 @@
 		<div id="container" class="login">
 			<p id="p1">회원가입</p>
 			<!-- 회원가입 폼-->
-			<form action="/members/new" th:object="${memberFormDto}" method="post">
+			<form role="form" th:action="@{/members/new}" th:object="${memberFormDto}"  method="post">
 				<p id="p2">이메일</p>
 				<table id="id">
 					<tr>
 						<td><input type="text" th:field="*{email}" placeholder="이메일을 입력해주세요"></td>
+						<p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
 					</tr>
 
 				</table>
@@ -296,7 +296,7 @@
           
           <div class="mb-3">
 
-           <input type="text" id="streetAdr" th:field="*{streetAdr}"   class="form-control" placeholder="도로명 주소" readonly>
+           <input type="text" id="streetAdr" th:field="*{streetAdr}"  class="form-control" placeholder="도로명 주소" readonly>
             <div class="invalid-feedback">
               주소를 입력해주세요.
             </div>
@@ -308,10 +308,10 @@
   		  </div>
 				<table id="original">
 					<tr>
-						<td> <input class="btn btn-primary btn-lg btn-block" type="submit" value="가입완료"></td>
+						<td><input type="submit" value="가입완료"></td>
 					</tr>
 				</table>
-			</form>
+	</form>
 		</div>
 	</div>
 </div>

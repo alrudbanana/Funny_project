@@ -1,4 +1,5 @@
 package com.project.controller;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +21,6 @@ import lombok.RequiredArgsConstructor;
 public class MemberController {
 	
     private final MemberService memberService;
-    private final PasswordEncoder passwordEncoder;
 
     //회원가입 뷰 페이지 출력
     @GetMapping(value = "/new")
@@ -31,21 +31,31 @@ public class MemberController {
     
     @PostMapping(value="/new")
     public String memberForm(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model){
+    	System.out.println("컨트롤러 호출됨 ");
+    	System.out.println(memberFormDto.getMemName());
+    	
     	if(bindingResult.hasErrors()){
+    		
+    		System.out.println("Validation 오류발생");
+    		
             return "memberForm";
         }
     	
        try {
-    	   Member member = Member.createMember(memberFormDto, passwordEncoder);
-    	  this.memberService.saveMember(member);
+    	   this.memberService.saveMember(memberFormDto);
     	  
-       }catch(Exception e) {
-    	   model.addAttribute("errorMessage",e.getMessage());
-    	   return "memberForm";
+       }catch(DataIntegrityViolationException e) {
+    	   e.printStackTrace();
+    	   bindingResult.reject("signupFailed", "이미 등록된 사용자입니다.");
+       } catch(Exception e) {
+               e.printStackTrace();
+               bindingResult.reject("signupFailed", e.getMessage());
+               return "memberForm";
        }
-        return "redirect:/";
-    	}
+    return "redirect:/";
+   
     }
+}
     
     //로그인 
 //    @GetMapping(value = "/login")

@@ -47,16 +47,4 @@ public class Member {
     private String streetAdr;
     private String detailAdr;
     
-    public static Member createMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder ) {
-    	Member member = new Member();
-    	member.setEmail(memberFormDto.getEmail());
-    	String memPass = passwordEncoder.encode(memberFormDto.getMemPass());
-    	member.setMemPass(memPass);
-    	member.setMemName(memberFormDto.getMemName());
-    	member.setMemPhone(memberFormDto.getMemPhone());
-    	member.setZipcode(memberFormDto.getZipcode());
-    	member.setStreetAdr(memberFormDto.getStreetAdr());
-    	member.setDetailAdr(memberFormDto.getDetailAdr());
-    	return member;
-    }
 }
