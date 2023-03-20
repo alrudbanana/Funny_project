@@ -1,6 +1,7 @@
 package com.project.entity;
 
 import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import jakarta.persistence.Column;
@@ -19,5 +20,8 @@ public abstract class BaseEntity extends BaseTimeEntity {
 	private String createBy;
 	
 	//누가 수정 했는지
+	@LastModifiedBy
+	private String modifiedBy;
+	
 	
 }
