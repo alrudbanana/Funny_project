@@ -4,8 +4,12 @@ package com.project.entity;
 
 import java.time.LocalDateTime;
 
+import com.project.constant.ItemStatus;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -39,9 +43,14 @@ public class Item extends BaseEntity {
 	private String itemDetail; //프로젝트 상세
 	
 	@Column(nullable = false) 
+	private LocalDateTime itemStartDate; //프로젝트 시작 날짜
+	
+	@Column(nullable = false) 
 	private LocalDateTime itemEndDate; //프로젝트 마감 날짜
 	
-	//상품상태 엔티티
+	@Enumerated(EnumType.STRING)
+	private ItemStatus itemStatus; //프로젝트 상태(진행중/종료)
+	
 	
 	
 	
