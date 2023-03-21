@@ -14,7 +14,7 @@ import lombok.Getter;
 @Getter
 public abstract class BaseEntity extends BaseTimeEntity {
 
-	//누가 생성했는지(ID (email))
+	//누가 생성했는지
 	@CreatedBy
 	@Column(updatable = false)
 	private String createBy;
