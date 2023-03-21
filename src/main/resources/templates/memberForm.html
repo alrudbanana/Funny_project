@@ -272,18 +272,28 @@
 				<table id="pw">
 					<tr>
 						<td><input type="password" th:field="*{memPass}" placeholder="비밀번호를 입력해주세요"></td>
+						 <p th:if="${#fields.hasErrors('memPass')}" th:errors="*{memPass}" class="fieldError">Incorrect data</p>
+					</tr>
+				</table>
+				<p id="p2">비밀번호 확인</p>
+				<table id="pw">
+					<tr>
+						<td><input type="password" th:field="*{memPass2}" placeholder="비밀번호를 입력해주세요"></td>
+						 <p th:if="${#fields.hasErrors('memPass2')}" th:errors="*{memPass2}" class="fieldError">Incorrect data</p>
 					</tr>
 				</table>
 				<p id="p2">이름</p>
 				<table id="name">
 					<tr>
 						<td><input type="text" th:field="*{memName}" placeholder="이름을 입력해주세요"></td>
+						<p th:if="${#fields.hasErrors('memName')}" th:errors="*{memName}" class="fieldError">Incorrect data</p>
 					</tr>
 				</table>
 				<p id="p2">핸드혼번호</p>
 				<table id="memPhone">
 					<tr>
 						<td><input type="text" th:field="*{memPhone}" placeholder="핸드폰 번호를 입력해주세요"></td>
+						<p th:if="${#fields.hasErrors('memPhone')}" th:errors="*{memPhone}" class="fieldError">Incorrect data</p>
 					</tr>
 				</table>
 				
@@ -291,19 +301,18 @@
             <!-- 주소 -->
             <p id="p2">우편번호</p>
             <input id="zipcode" type="text" th:field="*{zipcode}" placeholder="우편번호" class="form-control" readonly>
+            <p th:if="${#fields.hasErrors('zipcode')}" th:errors="*{zipcode}" class="fieldError">Incorrect data</p>
             <input type="button" onclick="findAddr()" class="form-control" value="우편번호 찾기"><br>
           </div>
           
           <div class="mb-3">
-
+			<p id="p2">도로명 주소</p>
            <input type="text" id="streetAdr" th:field="*{streetAdr}"  class="form-control" placeholder="도로명 주소" readonly>
-            <div class="invalid-feedback">
-              주소를 입력해주세요.
-            </div>
+            <p th:if="${#fields.hasErrors('streetAdr')}" th:errors="*{streetAdr}" class="fieldError">Incorrect data</p>
           </div>
 
           <div class="mb-3">
-            
+            <p id="p2">상세주소</p>
             <input type="text" id="detailAdr" th:field="*{detailAdr}" class="form-control" placeholder="상세 주소">
   		  </div>
 				<table id="original">

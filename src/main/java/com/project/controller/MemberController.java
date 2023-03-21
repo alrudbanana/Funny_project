@@ -37,6 +37,11 @@ public class MemberController {
     	if(bindingResult.hasErrors()) {
 			return "memberForm";
 		}
+    	if(!memberFormDto.getMemPass().equals(memberFormDto.getMemPass2())) {
+    		 bindingResult.rejectValue("memPass2", "passwordInCorrect", 
+                     "2개의 패스워드가 일치하지 않습니다.");
+             return "memberForm";
+    	}
        try {
     	   this.memberService.saveMember(memberFormDto);
     	  
