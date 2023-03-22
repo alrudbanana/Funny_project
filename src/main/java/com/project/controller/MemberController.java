@@ -61,7 +61,6 @@ public class MemberController {
    
     }
 
-<<<<<<< HEAD
 
 	@GetMapping(value = "/detail/{idx}")
 	public String detail(Model model, @PathVariable("idx") Long idx) {
@@ -146,6 +145,6 @@ public String memberModify( @Valid MemberFormDto memberFormDto, BindingResult bi
 //        return "redirect:/";
 //    }
  
-}
+
    
 
