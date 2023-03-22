@@ -20,7 +20,7 @@ import lombok.ToString;
 @Entity
 @ToString
 @Getter @Setter
-public class Member {
+public class Member extends BaseTimeEntity {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idxMem")

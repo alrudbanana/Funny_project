@@ -52,13 +52,13 @@ public class MemberController {
     return "redirect:/";
    
     }
-}
+
     
     //로그인 
-//    @GetMapping(value = "/login")
-//    public String login(){
-//        return "login";
-//    }
+    @GetMapping(value = "/login")
+    public String login(){
+        return "login";
+    }
 //
 //    
 //    @GetMapping(value = "/login/error")
@@ -89,6 +89,6 @@ public class MemberController {
 //        return "redirect:/";
 //    }
  
-    
+}
    
 
