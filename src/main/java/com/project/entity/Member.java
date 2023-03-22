@@ -23,7 +23,7 @@ import lombok.ToString;
 public class Member extends BaseTimeEntity {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idxMem")
+   
     private Long idx; //자동으로 늘어나는값
     
     @Email
