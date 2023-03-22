@@ -4,6 +4,8 @@ package com.project.entity;
 
 import java.time.LocalDateTime;
 
+import com.project.constant.ItemStatus;
+
 //import com.project.constant.ItemStatus;
 
 import jakarta.persistence.Column;
