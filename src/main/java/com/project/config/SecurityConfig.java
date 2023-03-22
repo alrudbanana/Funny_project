@@ -34,7 +34,19 @@ public class SecurityConfig {
         .headers()
         .addHeaderWriter(new XFrameOptionsHeaderWriter(
                 XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))
-    ;
+        //로그인 
+    	.and()
+		.formLogin()
+		.loginPage("/members/login")
+		.defaultSuccessUrl("/")
+		//로그아웃
+	.and()
+		.logout()
+		.logoutRequestMatcher(new AntPathRequestMatcher("/members/logout"))
+		.logoutSuccessUrl("/")
+		.invalidateHttpSession(true)
+		;
+        
         return http.build();
     }
 
@@ -43,5 +55,11 @@ public class SecurityConfig {
 	    public PasswordEncoder passwordEncoder() {
 	        return new BCryptPasswordEncoder();
 	}
+	 
+	 @Bean
+		AuthenticationManager authenticateionManager(AuthenticationConfiguration authenticationConfiguration) 
+		throws Exception{
+			return authenticationConfiguration.getAuthenticationManager();
+		}
 	
 }
