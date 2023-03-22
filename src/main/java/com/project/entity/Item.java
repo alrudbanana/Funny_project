@@ -4,7 +4,7 @@ package com.project.entity;
 
 import java.time.LocalDateTime;
 
-import com.project.constant.ItemStatus;
+//import com.project.constant.ItemStatus;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -48,8 +48,8 @@ public class Item extends BaseEntity {
 	@Column(nullable = false) 
 	private LocalDateTime itemEndDate; //프로젝트 마감 날짜
 	
-	@Enumerated(EnumType.STRING)
-	private ItemStatus itemStatus; //프로젝트 상태(진행중/종료)
+	//@Enumerated(EnumType.STRING)
+	//private ItemStatus itemStatus; //프로젝트 상태(진행중/종료)
 	
 	
 	
