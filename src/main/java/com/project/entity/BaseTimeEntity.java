@@ -17,10 +17,12 @@ import lombok.Setter;
 @Getter @Setter
 public abstract class BaseTimeEntity {
 	
+	//생성시간
 	@CreatedDate
 	@Column(updatable = false)
 	private LocalDateTime regTime; 
 	
+	//수정시간
 	@LastModifiedDate
 	private LocalDateTime updateTime;
 
