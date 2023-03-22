@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout1}"
+      
       >
   <head>
 
@@ -15,9 +16,20 @@
 
     <!-- 나의 스타일 추가 -->
     <link rel="stylesheet" href="/css/login.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2')">
+	<style>
+		#errormessagess{
+		position:absolute;
+		top:50px;
+		}
+		
+		
+	</style>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+	</style>
   </head>
-  <body class="text-center">
+ <body class="text-center">
  <div layout:fragment="content">   
     <!--  html 전체 영역을 지정하는 container -->
     <div id="container">
@@ -27,20 +39,21 @@
         <!-- 로그인 페이지 타이틀 -->
         <div id="loginBoxTitle">Funny login</div>
         <!-- 아이디, 비번, 버튼 박스 -->
+        <form th:action="@{/members/login}" method="post">
         <div id="inputBox">
-          <div class="input-form-box"><span>아이디 </span><input type="text" name="uid" class="form-control"></div>
-          <div class="input-form-box"><span>비밀번호 </span><input type="password" name="upw" class="form-control"></div>
+          <div class="input-form-box"><span>이메일 </span><input type="text" name="username" id="email" class="form-control"></div>
+          <div class="input-form-box"><span>비밀번호 </span><input type="password"name="password" id="password" class="form-control"></div>
           <div class="button-login-box" >
-            <button type="button" class="btn btn-primary btn-xs" style="width:100%">로그인</button>
+            <button type="submit" class="btn btn-primary btn-xs" style="width:100%">로그인</button>
           </div>
         </div>
-        
+        </form>
       </div>
       
-      <div th:if="${param.error}">
-            <div>
+      <div th:if="${param.error}" id="errormessagess">
+            <p>
                 사용자ID 또는 비밀번호를 확인해 주세요.
-            </div>
+            </p>
         </div>
     </div>
 

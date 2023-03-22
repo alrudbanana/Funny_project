@@ -55,5 +55,11 @@ public class SecurityConfig {
 	    public PasswordEncoder passwordEncoder() {
 	        return new BCryptPasswordEncoder();
 	}
+	 
+	 @Bean
+		AuthenticationManager authenticateionManager(AuthenticationConfiguration authenticationConfiguration) 
+		throws Exception{
+			return authenticationConfiguration.getAuthenticationManager();
+		}
 	
 }
